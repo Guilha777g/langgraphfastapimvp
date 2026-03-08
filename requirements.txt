@@ -1,0 +1,12 @@
+langgraph==0.3.34
+langchain-openai==0.3.12
+langchain-core==0.3.43
+langgraph-checkpoint-postgres==2.0.12
+psycopg[binary]==3.2.6
+fastapi==0.115.12
+uvicorn==0.34.2
+httpx==0.28.1
+pyyaml==6.0.2
+python-dotenv==1.1.0
+google-api-python-client==2.166.0
+google-auth==2.40.1
