@@ -15,18 +15,19 @@ _flow_descriptions = "\n".join(
     for name, info in _flows.items()
 )
 
+_docstring = (
+    "Dispara um fluxo n8n via webhook. Envie os dados necessarios como JSON string.\n\n"
+    "Fluxos disponiveis:\n"
+    f"{_flow_descriptions}\n\n"
+    "Args:\n"
+    "    flow_name: Nome do fluxo (ex: buscar_documentos, criar_lead, consultar_pedido)\n"
+    '    data: JSON string com os dados para o fluxo (ex: \'{"query": "preco do pao"}\')'
+)
 
-@tool
+
+@tool(description=_docstring)
 def trigger_n8n(flow_name: str, data: str = "{}") -> str:
-    f"""Dispara um fluxo n8n via webhook. Envie os dados necessarios como JSON string.
-
-Fluxos disponiveis:
-{_flow_descriptions}
-
-Args:
-    flow_name: Nome do fluxo (ex: buscar_documentos, criar_lead, consultar_pedido)
-    data: JSON string com os dados para o fluxo (ex: '{{"query": "preco do pao"}}')
-"""
+    """Dispara um fluxo n8n via webhook."""
     flow = _flows.get(flow_name)
     if not flow:
         available = ", ".join(_flows.keys())
